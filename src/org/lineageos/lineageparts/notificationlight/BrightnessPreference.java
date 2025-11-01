@@ -53,10 +53,10 @@ public class BrightnessPreference extends CustomDialogPreference<AlertDialog>
     public static final int LIGHT_BRIGHTNESS_MAXIMUM = 255;
 
     // Minimum delay between LED notification updates
-    private final static long LED_UPDATE_DELAY_MS = 250;
+    private final static long LED_UPDATE_DELAY_MS = 120;
 
     // Default led color used to illustrate brightness
-    private final static int DEFAULT_LED_COLOR = 0xFFFFFF;
+    private final static int DEFAULT_LED_COLOR = 0xFF0000;
 
     private TextView mPreferencePercent;
 
