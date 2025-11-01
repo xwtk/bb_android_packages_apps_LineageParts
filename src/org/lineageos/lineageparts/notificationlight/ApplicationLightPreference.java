@@ -100,9 +100,9 @@ public class ApplicationLightPreference extends CustomDialogPreference<LightSett
                                       int color, int onValue, int offValue, boolean onOffChangeable) {
         super(context, attrs);
         mColorValue = color;
-        mOnValue = onValue;
-        mOffValue = offValue;
-        mOnOffChangeable = onOffChangeable;
+        mOnValue = DEFAULT_TIME;
+        mOffValue = DEFAULT_SPEED;
+        mOnOffChangeable = true;
         mHasDefaults = false;
         mLedBrightness = 0; // use system brightness
 
@@ -197,8 +197,8 @@ public class ApplicationLightPreference extends CustomDialogPreference<LightSett
     protected void onDialogClosed(boolean positiveResult) {
         if (positiveResult) {
             mColorValue = mDialog.getColor() & 0x00FFFFFF; // strip alpha, led does not support it
-            mOnValue = mDialog.getPulseSpeedOn();
-            mOffValue = mDialog.getPulseSpeedOff();
+            mOnValue = DEFAULT_TIME;
+            mOffValue = DEFAULT_SPEED;
             updatePreferenceViews();
             callChangeListener(null);
         }
@@ -242,7 +242,7 @@ public class ApplicationLightPreference extends CustomDialogPreference<LightSett
     }
 
     public void setOnValue(int value) {
-        mOnValue = value;
+        mOnValue = DEFAULT_TIME;
         updatePreferenceViews();
     }
 
@@ -251,7 +251,7 @@ public class ApplicationLightPreference extends CustomDialogPreference<LightSett
     }
 
     public void setOffValue(int value) {
-        mOffValue = value;
+        mOffValue = DEFAULT_SPEED;
         updatePreferenceViews();
     }
 
@@ -261,33 +261,33 @@ public class ApplicationLightPreference extends CustomDialogPreference<LightSett
 
     public void setAllValues(int color, int onValue, int offValue) {
         mColorValue = color;
-        mOnValue = onValue;
-        mOffValue = offValue;
+        mOnValue = DEFAULT_TIME;
+        mOffValue = DEFAULT_SPEED;
         updatePreferenceViews();
     }
 
     public void setAllValues(int color, int onValue, int offValue, boolean onOffChangeable) {
         mColorValue = color;
-        mOnValue = onValue;
-        mOffValue = offValue;
-        mOnOffChangeable = onOffChangeable;
+        mOnValue = DEFAULT_TIME;
+        mOffValue = DEFAULT_SPEED;
+        mOnOffChangeable = true;
         updatePreferenceViews();
     }
 
     public void setOnOffValue(int onValue, int offValue) {
-        mOnValue = onValue;
-        mOffValue = offValue;
+        mOnValue = DEFAULT_TIME;
+        mOffValue = DEFAULT_SPEED;
         updatePreferenceViews();
     }
 
     public void setOnOffChangeable(boolean value) {
-        mOnOffChangeable = value;
+        mOnOffChangeable = true;
     }
 
     public void setDefaultValues(int color, int onValue, int offValue) {
         mDefaultColorValue = color;
-        mDefaultOnValue = onValue;
-        mDefaultOffValue = offValue;
+        mDefaultOnValue = DEFAULT_TIME;
+        mDefaultOffValue = DEFAULT_SPEED;
         mHasDefaults = true;
     }
 
@@ -307,39 +307,10 @@ public class ApplicationLightPreference extends CustomDialogPreference<LightSett
     }
 
     private String mapLengthValue(Integer time) {
-        if (!mOnOffChangeable) {
-            return getContext().getResources().getString(R.string.pulse_length_always_on);
-        }
-        if (time == DEFAULT_TIME) {
-            return getContext().getResources().getString(R.string.default_time);
-        }
-
-        String[] timeNames = getContext().getResources().getStringArray(R.array.notification_pulse_length_entries);
-        String[] timeValues = getContext().getResources().getStringArray(R.array.notification_pulse_length_values);
-
-        for (int i = 0; i < timeValues.length; i++) {
-            if (Integer.decode(timeValues[i]).equals(time)) {
-                return timeNames[i];
-            }
-        }
-
-        return getContext().getResources().getString(R.string.custom_time);
+        return getContext().getResources().getString(R.string.default_time);
     }
 
     private String mapSpeedValue(Integer time) {
-        if (time == DEFAULT_SPEED) {
-            return getContext().getResources().getString(R.string.default_time);
-        }
-
-        String[] timeNames = getContext().getResources().getStringArray(R.array.notification_pulse_speed_entries);
-        String[] timeValues = getContext().getResources().getStringArray(R.array.notification_pulse_speed_values);
-
-        for (int i = 0; i < timeValues.length; i++) {
-            if (Integer.decode(timeValues[i]).equals(time)) {
-                return timeNames[i];
-            }
-        }
-
-        return getContext().getResources().getString(R.string.custom_time);
+        return getContext().getResources().getString(R.string.default_time);
     }
 }
