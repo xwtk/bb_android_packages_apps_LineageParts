@@ -40,6 +40,7 @@ public class ApplicationLightPreference extends CustomDialogPreference<LightSett
 
     private static String TAG = "AppLightPreference";
     public static final int DEFAULT_TIME = 250;
+    public static final int DEFAULT_SPEED = 5000;
     public static final int DEFAULT_COLOR = 0xff0000;
 
     private ImageView mLightColorView;
@@ -326,7 +327,7 @@ public class ApplicationLightPreference extends CustomDialogPreference<LightSett
     }
 
     private String mapSpeedValue(Integer time) {
-        if (time == DEFAULT_TIME) {
+        if (time == DEFAULT_SPEED) {
             return getContext().getResources().getString(R.string.default_time);
         }
 
