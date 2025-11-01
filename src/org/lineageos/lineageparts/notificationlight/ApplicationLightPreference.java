@@ -39,7 +39,7 @@ public class ApplicationLightPreference extends CustomDialogPreference<LightSett
         implements View.OnLongClickListener {
 
     private static String TAG = "AppLightPreference";
-    public static final int DEFAULT_TIME = 250;
+    public static final int DEFAULT_TIME = 120;
     public static final int DEFAULT_SPEED = 5000;
     public static final int DEFAULT_COLOR = 0xff0000;
 
