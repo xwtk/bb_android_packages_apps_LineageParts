@@ -191,9 +191,9 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
 
     private void updateBrightnessPrefColor(int color) {
         // If the user has selected no light (ie black) for
-        // full charge, use white for the brightness preference.
+        // full charge, use green for the brightness preference.
         if (color == 0) {
-            color = 0xFFFFFF;
+            color = 0x00FF00;
         }
         mBatteryBrightnessPref.setLedColor(color);
         mBatteryBrightnessZenPref.setLedColor(color);
