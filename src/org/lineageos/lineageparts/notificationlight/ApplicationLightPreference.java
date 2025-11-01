@@ -72,7 +72,7 @@ public class ApplicationLightPreference extends CustomDialogPreference<LightSett
      * @param attrs
      */
     public ApplicationLightPreference(Context context, AttributeSet attrs) {
-        this(context, attrs, DEFAULT_COLOR, DEFAULT_TIME, DEFAULT_TIME);
+        this(context, attrs, DEFAULT_COLOR, DEFAULT_TIME, DEFAULT_SPEED);
     }
 
     /**
