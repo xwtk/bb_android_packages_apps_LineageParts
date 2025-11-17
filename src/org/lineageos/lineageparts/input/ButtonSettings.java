@@ -948,11 +948,6 @@ public class ButtonSettings extends SettingsPreferenceFragment
                 result.add(KEY_SWAP_CAPACITIVE_KEYS);
             }
 
-            if (!DeviceUtils.hasButtonBacklightSupport(context)
-                    && !DeviceUtils.hasKeyboardBacklightSupport(context)) {
-                result.add(KEY_BUTTON_BACKLIGHT);
-            }
-
             if (hasNavigationBar()) {
                 if (DeviceUtils.isEdgeToEdgeEnabled(context)) {
                     result.add(KEY_NAVIGATION_ARROW_KEYS);
